@@ -1,0 +1,3 @@
+put in C:\\xampp\\htdocs
+
+accessible by localhost/php1
