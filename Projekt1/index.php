@@ -28,13 +28,13 @@
         <div class="col-sm-4">
             <div class="content">
                 <?php
-                    if(isset($_GET['id']) && $_GET['id'] == 'loglap')
+                    if(isset($_GET['id']) && $_GET['id'] == 'reglap')
                     {
-                        include_once('login.php');
+                        include_once('reg.php');
                     }
                     else
                     {
-                        include_once('reg.php');
+                        include_once('login.php');
                     }
                 ?>
             </div>
