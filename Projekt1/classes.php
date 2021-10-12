@@ -17,23 +17,27 @@
         function __construct($name, $password){
             
             if(empty($name)){
-                $this->uNameErr = "A username mező nem lehet üres!";
+                $this->uNameErr = "The Username field can't be left empty!";
             }
-            else if(!preg_match("/^[a-zA-Z0-9]*$/", $name)){
-                $this-> uNameErr = "Nem megfelelő formátum!";
+            else if(strlen($name) < 8){
+                $len = strlen($name);
+                $this->uNameErr = "Your password must not be shorter than 8 characters, your password is only $len characters long!";
+            }
+            else if(!preg_match("/^.*(?=.*[a-zA-Z]).*$/", $name)){
+                $this-> uNameErr = "Wrong format!";
             }
             else $this-> uNameErr = ""; $this->uName = $name;
 
 
             if(empty($password)){
-                $this->uPassErr = "A password mező nem lehet üres!";
+                $this->uPassErr = "The Password field can't be left empty!";
             }
-            else if(!preg_match("/^[a-zA-Z0-9]*$/", $password)){
-                $this-> uPassErr = "Nem megfelelő formátum!";
+            else if(!preg_match("/^.*(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/", $password)){
+                $this-> uPassErr = "Wrong format!";
             }
             else if(strlen($password) < 8){
                 $len = strlen($password);
-                $this->uPassErr = "A jelszó nem lehet rövidebb mint 8 karakter, az ön jelszava csak $len karakter hosszú!";
+                $this->uPassErr = "Your password must not be shorter than 8 characters, your password is only $len characters long!";
             }
             else $this-> uPassErr = ""; $this->uPass = $password;
         }
@@ -53,47 +57,47 @@
     }
 
     class RegCheck extends Forms{
-        function __construct($name, $password, $passagain, $fullname, $email){
+        function __construct($name, $password, $passagain, $email, $fullname){
 
             if(empty($name)){
-                $this->uNameErr = "A username mező nem lehet üres!";
+                $this->uNameErr = "The Username field can't be left empty!";
             }
-            else if(!preg_match("/^[a-zA-Z0-9]*$/", $name) || strlen($name) < 5){
-                $this-> uNameErr = "Nem megfelelő formátum!";
+            else if(!preg_match("/^.*(?=.*[a-zA-Z]).*$/", $name) || strlen($name) < 5){
+                $this-> uNameErr = "Wrong format!";
             }
             else $this-> uNameErr = ""; $this->uName = $name;
 
 
             if(empty($password)){
-                $this->uPassErr = "A password mező nem lehet üres!";
+                $this->uPassErr = "The Password field can't be left empty!";
             }
-            else if(!preg_match("/^[a-zA-Z0-9]*$/", $password)){
-                $this-> uPassErr = "Nem megfelelő formátum!";
+            else if(!preg_match("/^.*(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/", $password)){
+                $this-> uPassErr = "Wrong format!";
             }
             else if(strlen($password) < 8){
                 $len = strlen($password);
-                $this->uPassErr = "A jelszó nem lehet rövidebb mint 8 karakter, az ön jelszava csak $len karakter hosszú!";
+                $this->uPassErr = "Your password must not be shorter than 8 characters, your password is only $len characters long!";
             }
             else $this-> uPassErr = ""; $this->uPass = $password;
 
 
             if(empty($passagain)){
-                $this->uPassAgErr = "A password again mező nem lehet üres!";
+                $this->uPassAgErr = "The Password again field can't be left empty!";
             }
             else if($password != $passagain){
-                $this->uPassAgErr = "A jelszavak nem egyeznek!";
+                $this->uPassAgErr = "The passwords do not match!";
             }
             else $this->uPassAgErr = ""; $this->uPassAgain = $passagain;
 
 
             if(empty($fullname)){
-                $this->uFullErr = "A Full name mező nem lehet üres!";
+                $this->uFullErr = "The Full Name field can't be left empty!";
             }
             else $this->uFullErr = ""; $this->uFullname = $fullname;
 
 
             if(empty($email)){
-                $this->uEmailErr = "Az Email mező nem lehet üres!";
+                $this->uEmailErr = "The Email field can't be left empty!";
             }
             else $this->uEmailErr = ""; $this->uEmail = $email;
         }
@@ -103,6 +107,9 @@
         }
         function get_pass(){
             return $this->uPass;
+        }
+        function get_passag(){
+            return $this->uPassAgain;
         }
         function get_fullname(){
             return $this->uFullname;
