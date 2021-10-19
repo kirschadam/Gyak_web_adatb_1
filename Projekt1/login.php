@@ -20,19 +20,27 @@
     <div class="form-group">                        
         <label for="username">Username: </label>
         <input type="text" name="username" class="form-control" placeholder="Your username here..." value=<?php echo $log->get_logname();?>>
-        <p class="error_p" id="uerr"><?php echo $log->get_lognameerr();?></p>
+        <p class="error_p" id="uerr"></p>
     </div>
     <div class="form-group">                        
         <label for="password">Password: </label>
         <input type="password" name="password" class="form-control" placeholder="Your password here..." value=<?php echo $log->get_logpass();?>>
-        <p class="error_p" id="perr"><?php echo $log->get_logpasserr();?></p>
+        <p class="error_p" id="perr"></p>
     </div>
-    <input type="submit" class="btn btn-primary" value="Login"><br>
+    <input type="submit" id="submit" class="btn btn-primary" value="Login" disabled><br>
     <a href="index.php?id=reglap">Register</a>
 </form>
 <script>
     $(document).ready(function () {
         
+        if($('input[name=username]').val().length < 1){
+                $("#uerr").html("The Username field can't be left empty!");
+        }
+        if($('input[name=password]').val().length < 1){
+                $("#perr").html("The Password field can't be left empty!");
+        }
+        validate();
+
         $('input[name=username]').keyup(function () { 
 
             var regex = new RegExp(/^.*(?=.*[a-zA-Z]).*$/)
@@ -49,6 +57,7 @@
             else{
                 $("#uerr").html("");
             }
+            validate();
         });
         
         $('input[name=password]').keyup(function () {
@@ -67,6 +76,23 @@
             else{
                 $("#perr").html("");
             }
+            validate();
         });
+
+        
     });
+
+    function validate(){
+        var count = 0;
+
+        $(".error_p").each(function (index, element) {
+            if($(this).html() != ""){ count += 1; }
+        });
+        
+        if(count == 0){
+            $( "#submit" ).attr( "disabled", false );
+        }
+        else $( "#submit" ).attr( "disabled", true );
+    }
+
 </script>
