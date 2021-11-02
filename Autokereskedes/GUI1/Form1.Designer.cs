@@ -206,7 +206,7 @@ namespace GUI1
             this.Main2_stripitem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -269,6 +269,7 @@ namespace GUI1
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.Rendszam_label);
             this.Controls.Add(this.Szin_label);
             this.Controls.Add(this.Gyartaseve_label);
@@ -281,11 +282,11 @@ namespace GUI1
             this.Controls.Add(this.Add_button);
             this.Controls.Add(this.Listbox);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GUI1";
+            this.Text = "Autókereskedés";
             this.Input_panel.ResumeLayout(false);
             this.Input_panel.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
